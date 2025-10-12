@@ -1,4 +1,4 @@
-# 🧩 Lab 6: Chat Component
+# Lab 6: Chat Component
 
 ## Overview
 This lab introduces **component-based thinking**, a core concept in modern web development.  
