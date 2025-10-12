@@ -81,26 +81,26 @@ lab6-components/
 ## Design Decisions
 ### DOM approach
 #### Moved prototype `<style>` and HTML structure into this
-Out of sheer laziness I just used the HTML structure and CSS style from the prototype and tried to brute force it into the DOM approach
+* Out of sheer laziness I just used the HTML structure and CSS style from the prototype and tried to brute force it into the DOM approach
 
-### Replaced `innerHTML` with `createElement()` and `appendChild()`
-Instead of injecting HTML directly with `innerHTML`, I now use DOM methods like `createElement()` and `appendChild()` as per the instructions
+#### Replaced `innerHTML` with `createElement()` and `appendChild()`
+* Instead of injecting HTML directly with `innerHTML`, I now use DOM methods like `createElement()` and `appendChild()` as per the instructions
 of the assignment.
 
-### Created a speaker identifier so that the CSS styles the appropriate speech
-Just used an if statement to differentiate who the speaker is so I could use my previous
+#### Created a speaker identifier so that the CSS styles the appropriate speech
+* Just used an if statement to differentiate who the speaker is so I could use my previous
 CSS style sheet.
 
-### Created message elements dynamically with `<article>` and `<p>` tags
-Each chat message is now wrapped in semantic HTML elements (`<article>` for message grouping and `<p>` for text).
+#### Created message elements dynamically with `<article>` and `<p>` tags
+* Each chat message is now wrapped in semantic HTML elements (`<article>` for message grouping and `<p>` for text).
 This structure matches the prototype’s HTML and ensures accessibility and consistent CSS styling across all chat messages.
 
-### Added event listeners for both click and Enter key
-I added event listeners for both the Send button and the Enter key. This makes the interface more intuitive, letting users send
+#### Added event listeners for both click and Enter key
+* I added event listeners for both the Send button and the Enter key. This makes the interface more intuitive, letting users send
 messages in multiple ways. It improves accessibility and creates a smoother, more natural chat experience.
 
-### Used `e.preventDefault()` on form submission
-By default, pressing Enter in a form triggers a page reload. Using `e.preventDefault()` stops that behavior, 
+#### Used `e.preventDefault()` on form submission
+* By default, pressing Enter in a form triggers a page reload. Using `e.preventDefault()` stops that behavior, 
 preventing the chat from clearing itself after each message. This allows the conversation history to stay visible as the chat continues.
 
 
