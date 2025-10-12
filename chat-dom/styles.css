@@ -61,7 +61,6 @@ h1 {
     max-width: 40ch;
     padding: .5rem 1rem;
     font-size: clamp(.5rem, 2vw, 1rem);
-    color:black;
 }
 
 .user-messages {
@@ -96,9 +95,6 @@ h1 {
     background-color: whitesmoke;
     color:black;
 }
-.chat-input button:hover{
-    background:darkgray;
-}
 
 .chat-input button {
     background: lightgray;
@@ -107,8 +103,7 @@ h1 {
     border-radius: 1.5rem;
     padding: 0 1.5rem;
     font-size: 1rem;
-    transition: background-color 0.1s;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 .chat-footer {
     background: lightgoldenrodyellow;
@@ -119,10 +114,6 @@ h1 {
     color: darkgoldenrod;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-
 }
 
-.info-icon {
-    margin-right: 0.3rem;
-}
 

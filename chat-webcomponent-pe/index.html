@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chat Assistant- PE</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,20 +11,24 @@
         <h1>Chat Assistant</h1>
         <p class="subtitle">Prototype: Progressive Enhancement</p>
     </header>
+
     <article class="messages" role="log" aria-live="polite" aria-relevant="additions">
         <p class="bot-messages">Hello! How can I help you?</p>
     </article>
+
     <form class="input-area" autocomplete="off">
         <input type="text" placeholder="Type a message...">
         <button type="submit">Send</button>
     </form>
+
     <footer class="chat-footer">
         <p>
-            This version uses a <code>&lt;simple-chat&gt;</code> custom element
+            ℹ️This version uses a <code>&lt;simple-chat&gt;</code> custom element
             that progressively enhances semantic HTML.
             The chat still displays its base layout if JavaScript is disabled.
         </p>
     </footer>
 </simple-chat>
+<script type="module" src="chat-component.js"></script>
 </body>
 </html>

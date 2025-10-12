@@ -64,6 +64,10 @@ simple-chat {
     background: dodgerblue;
     color: white;
     align-self: flex-end;
+    border-radius: var(--radius) var(--radius) 0.2rem var(--radius) ;
+    max-width: 40ch;
+    padding: .5rem 1rem;
+    font-size: clamp(.5rem, 2vw, 1rem);
 }
 
 
@@ -108,9 +112,4 @@ simple-chat {
     color: darkgoldenrod;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-
-}
-
-.info-icon {
-    margin-right: 0.3rem;
 }
