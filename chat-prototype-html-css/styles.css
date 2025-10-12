@@ -19,3 +19,23 @@ body {
     flex-direction: column;
 
 }
+
+header {
+    background: dodgerblue;
+    color: white;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+h1 {
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    color: white;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    color: white;
+    margin: 0;
+}
