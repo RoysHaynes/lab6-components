@@ -53,6 +53,9 @@ h1 {
     align-self: flex-start;
     background: lightgray;
     border-radius: 1rem;
+    max-width: 40ch;
+    padding: .5rem 1rem;
+    font-size: clamp(.5rem, 2vw, 1rem);
 }
 
 .user-messages {
@@ -60,7 +63,13 @@ h1 {
     background:dodgerblue;
     border-radius: 1rem;
     color: white;
+    max-width: 40ch;
+    padding: .25rem 1rem;
+    font-size: clamp(.5rem, 2vw, 1rem);
+
 }
+
+
 
 .chat-input {
     display: flex;
@@ -95,7 +104,7 @@ h1 {
     background: lightgoldenrodyellow;
     border-top: 0.1rem solid gold;
     font-size: 0.9rem;
-    padding: 0.8rem 1rem;
+    padding: 0.25rem 1rem;
     text-align: center;
     color: darkgoldenrod;
     border-bottom-left-radius: 1rem;
@@ -105,3 +114,4 @@ h1 {
 .info-icon {
     margin-right: 0.3rem;
 }
+
