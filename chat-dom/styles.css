@@ -1,0 +1,52 @@
+chat-widget {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+chat-window {
+    display: block;
+    width: 400px;
+    height: 600px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+chat-window p {
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 8px;
+    max-width: 70%;
+}
+
+chat-window p.User {
+    background: #d1e7dd;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+chat-window p.Bot {
+    background: #f8d7da;
+    align-self: flex-end;
+    margin-right: auto;
+}
+
+#chatForm {
+    display: flex;
+    padding: 0.5em;
+    background: #fff;
+    border-top: 1px solid #ccc;
+
+    input[type="text"] {
+        flex: 1;
+        padding: 0.5em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+    }
+}
