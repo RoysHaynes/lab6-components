@@ -51,10 +51,15 @@ h1 {
 
 .bot-messages {
     align-self: flex-start;
+    background: lightgray;
+    border-radius: 1rem;
 }
 
 .user-messages {
     align-self: flex-end;
+    background:dodgerblue;
+    border-radius: 1rem;
+    color: white;
 }
 
 .chat-input {
@@ -85,4 +90,18 @@ h1 {
     padding: 0 1.5rem;
     font-size: 1rem;
     cursor: not-allowed;
+}
+.chat-footer {
+    background: lightgoldenrodyellow;
+    border-top: 0.1rem solid gold;
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    color: darkgoldenrod;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.info-icon {
+    margin-right: 0.3rem;
 }
