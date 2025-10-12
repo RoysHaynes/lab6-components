@@ -5,7 +5,7 @@ const log = (msg) => { if (DEBUG) console.log(msg); };
 
 
 function showResponse(response) {
-    addToChatWindow(response);
+    addToChatWindow(response,'bot');
 }
 
 function getResponse(message) {
@@ -20,15 +20,23 @@ function processMessage(message) {
 
 
 function addToChatWindow(message, speaker) {
-    const chatWindow = document.getElementById('chatWindow');
+    let chatWindow = document.getElementById('chatWindow');
+    let article = document.createElement('article');
+    let paragraph = document.createElement('p');
 
-    const p = document.createElement('p');
-    p.className = speaker;
-    p.textContent = `${speaker}: ${message}`;
-    chatWindow.appendChild(p);
+    if (speaker === 'bot') {
+        article.className = 'bot-messages';
+    } else {
+        article.className = 'user-messages';
+    }
+
+    paragraph.textContent = message;
+    article.appendChild(paragraph);
+    chatWindow.appendChild(article);
 
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
+
 
 
 function send() {
