@@ -1,4 +1,4 @@
-import { getBotResponse } from './eliza.js';
+import { getBotResponse } from '../chat-webcomponent-pe/eliza.js';
 
 const DEBUG = false;
 const log = (msg) => { if (DEBUG) console.log(msg); };
