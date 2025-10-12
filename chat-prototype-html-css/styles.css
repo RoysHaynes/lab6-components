@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom right, midnightblue, rebeccapurple);
+    background: linear-gradient(to bottom right, mediumslateblue, rebeccapurple);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     display: flex;
     justify-content: center;
@@ -55,4 +55,34 @@ h1 {
 
 .user-messages {
     align-self: flex-end;
+}
+
+.chat-input {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 0.1rem solid lightgray;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.chat-input input {
+    flex: 1;
+    padding: 0.7rem;
+    border: 0.1rem solid lightgray;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    background-color: whitesmoke;
+    color:black;
+}
+
+.chat-input button {
+    background: lightgray;
+    color: white;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    cursor: not-allowed;
 }
