@@ -5,7 +5,7 @@ const log = (msg) => { if (DEBUG) console.log(msg); };
 
 
 function showResponse(response) {
-    addToChatWindow(response, 'Bot');
+    addToChatWindow(response);
 }
 
 function getResponse(message) {
@@ -20,29 +20,52 @@ function processMessage(message) {
 
 
 function addToChatWindow(message, speaker) {
-    let chatWindow = document.getElementById('chatWindow');
-    chatWindow.innerHTML += `<p class="${speaker}">${speaker}: ${message}</p>`;
+    const chatWindow = document.getElementById('chatWindow');
+
+    const p = document.createElement('p');
+    p.className = speaker;
+    p.textContent = `${speaker}: ${message}`;
+    chatWindow.appendChild(p);
+
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
 
 function send() {
-    let messageBox = document.getElementById('messageBox');
-    let message = messageBox.value;
+    const messageBox = document.getElementById('messageBox');
+    const message = messageBox.value.trim();
 
-    let chatWindow = document.getElementById('chatWindow');
+    if (!message) return;
 
-    messageBox.value = ''; // clear the field
-    messageBox.focus();
-
-    addToChatWindow(message,'User');
-
+    addToChatWindow(message);
     processMessage(message);
+
+    messageBox.value = '';
+    messageBox.focus();
 }
+
 
 
 function init() {
     log('Initializing chat interface');
-    document.getElementById('sendBtn').addEventListener('click', function () {
+
+    let sendButton = document.getElementById('sendBtn');
+    let messageBox = document.getElementById('messageBox');
+    let chatForm = document.getElementById('chatForm');
+
+    sendButton.addEventListener('click', function () {
+        send();
+    });
+
+    messageBox.addEventListener('keypress', function (e) {
+        if( e.key === 'Enter') {
+        e.preventDefault();
+        send();
+    }
+    });
+
+    chatForm.addEventListener('submit', function (e) {
+        e.preventDefault();
         send();
     });
 }

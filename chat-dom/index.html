@@ -3,18 +3,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM RnD</title>
+    <title>Chat Assistant — DOM</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<main class="chat-container">
+    <header>
+        <h1>Chat Assistant</h1>
+        <p class="subtitle">Approach: DOM Manipulation (Interactive)</p>
+    </header>
 
-<chat-widget>
-    <chat-window id="chatWindow"></chat-window>
-    <form id="chatForm">
-        <input type="text" placeholder="Type a message" id="messageBox" autocomplete="off">
+    <!-- Empty log; JS will append <article class="message bot|user"><p>...</p></article> -->
+    <section
+            id="chatWindow"
+            class="chat-messages"
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions">
+        <!-- Messages will be injected here by script.js -->
+    </section>
+
+    <form id="chatForm" class="chat-input" autocomplete="off">
+        <input
+                id="messageBox"
+                type="text"
+                name="message"
+                placeholder="Type a message..."
+                aria-label="Type a message" />
         <button id="sendBtn" type="submit">Send</button>
     </form>
-</chat-widget>
+
+    <footer class="chat-footer">
+        <p>This version uses vanilla JS (DOM) to add messages dynamically.</p>
+    </footer>
+</main>
 
 <script type="module" src="script.js"></script>
 </body>
