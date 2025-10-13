@@ -1,19 +1,19 @@
 import {getBotResponse} from "./eliza.js";
 class SimpleChat extends HTMLElement {
     connectedCallback() {
-        this.elMessage= this.querySelector('.messages');
-        this.elForm = this.querySelector('form');
-        this.elInput = this.querySelector('input');
+        this.message= this.querySelector('.messages');
+        this.form = this.querySelector('form');
+        this.input = this.querySelector('input');
 
         let self = this;
 
-        this.elForm.addEventListener('submit', function(e){
+        this.form.addEventListener('submit', function(e){
             e.preventDefault();
-            let text = self.elInput.value.trim();
+            let text = self.input.value.trim();
             if(!text) return;
 
             self.addMessage(text,'user');
-            self.elInput.value = '';
+            self.input.value = '';
 
             let reply=getBotResponse(text);
             self.addMessage(reply,'bot')
@@ -26,8 +26,8 @@ class SimpleChat extends HTMLElement {
         let msg = document.createElement('p');
         msg.className = role + '-messages';
         msg.textContent = text;
-        this.elMessage.appendChild(msg);
-        this.elMessage.scrollTop = this.elMessage.scrollHeight;
+        this.message.appendChild(msg);
+        this.message.scrollTop = this.message.scrollHeight;
     }
 }
 customElements.define('simple-chat', SimpleChat);
