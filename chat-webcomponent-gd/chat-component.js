@@ -8,17 +8,17 @@ class ChatInterface extends HTMLElement {
 
     connectedCallback() {
         this.shadowRoot.innerHTML = `
-            <style>
-            :root{ --radius: 1rem;}
+        <style>
+            :host{ --radius: 1rem;}
             :host{
-            display:flex;
-            background: linear-gradient(to bottom right, mediumslateblue, rebeccapurple);
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: clamp(0.5rem, 2vw, 2rem);
+                display:flex;
+                background: linear-gradient(to bottom right, mediumslateblue, rebeccapurple);
+                font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                padding: clamp(0.5rem, 2vw, 2rem);
             }
 
 simple-chat {
@@ -58,6 +58,8 @@ simple-chat {
     overflow-y: auto;
     background: white;
 }
+
+
 
 .bot-messages  {
     align-self: flex-start;
@@ -121,6 +123,7 @@ simple-chat {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
+
 </style>
 <simple-chat>
     <header class="chat-header">
@@ -128,7 +131,7 @@ simple-chat {
         <p class="subtitle">Prototype: Graceful Degradation</p>
     </header>
 
-    <article class="messages"  aria-live="polite" aria-relevant="additions">
+    <article class="messages" role="log" aria-live="polite" aria-relevant="additions">
         <p class="bot-messages">Hello! How can I help you?</p>
     </article>
 
@@ -143,7 +146,7 @@ simple-chat {
         </p>
     </footer>
 </simple-chat>
-</main>
+
 
 `;
         this.message= this.shadowRoot.querySelector('.messages');
