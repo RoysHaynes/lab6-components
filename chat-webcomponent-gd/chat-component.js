@@ -10,9 +10,18 @@ class ChatInterface extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
             :root{ --radius: 1rem;}
-            :host{display:block;}
+            :host{
+            display:flex;
+            background: linear-gradient(to bottom right, mediumslateblue, rebeccapurple);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: clamp(0.5rem, 2vw, 2rem);
+            }
 
-.container {
+simple-chat {
     display: flex;
     flex-direction: column;
     width: clamp(22rem, 40vw, 32rem);
@@ -36,7 +45,7 @@ class ChatInterface extends HTMLElement {
 .chat-header .subtitle {
     margin: 0;
     font-size: clamp(0.9rem, 1.2vw, 1rem);
-    color: lavender;
+  
 }
 
 
@@ -113,13 +122,13 @@ class ChatInterface extends HTMLElement {
     border-bottom-right-radius: 1rem;
 }
 </style>
-<article class="container">
+<simple-chat>
     <header class="chat-header">
         <h1>Chat Assistant</h1>
         <p class="subtitle">Prototype: Graceful Degradation</p>
     </header>
 
-    <article class="messages" role="log" aria-live="polite" aria-relevant="additions">
+    <article class="messages"  aria-live="polite" aria-relevant="additions">
         <p class="bot-messages">Hello! How can I help you?</p>
     </article>
 
@@ -133,10 +142,39 @@ class ChatInterface extends HTMLElement {
             This chatbot uses graceful degradation.
         </p>
     </footer>
-</article>
-</main>`;
+</simple-chat>
+</main>
 
+`;
+        this.message= this.shadowRoot.querySelector('.messages');
+        this.form = this.shadowRoot.querySelector('form');
+        this.input = this.shadowRoot.querySelector('input');
+
+        let self= this;
+
+        this.form.addEventListener('submit', function(e){
+            e.preventDefault();
+            let text = self.input.value.trim();
+            if(!text) return;
+
+            self.addMessage(text,'user');
+            self.input.value = '';
+
+            let reply=getBotResponse(text);
+            self.addMessage(reply,'bot')
+
+
+        });
     }
+
+    addMessage(text, role) {
+        let msg = document.createElement('p');
+        msg.className = role + '-messages';
+        msg.textContent = text;
+        this.message.appendChild(msg);
+        this.message.scrollTop = this.message.scrollHeight;
+    }
+
 }
 customElements.define('chat-interface', ChatInterface);
 
