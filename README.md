@@ -7,7 +7,7 @@ We’ll build the same **chat interface** four different ways to understand how 
 By comparing these approaches, I’ll learn how decisions about where to place structure, style, and behavior affect scalability and future design choices.
 
 ## Project Link
-
+https://royshaynes.github.io/lab6-components/
 ### Key Themes
 - Components as self-contained UI units
 - Progressive enhancement and graceful degradation
