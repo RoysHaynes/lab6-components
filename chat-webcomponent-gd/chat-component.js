@@ -1,11 +1,31 @@
+/**
+ * @file chat-component.js
+ * @description Graceful Degradation Web Component for the Chat Assistant.
+ * This component uses a Shadow DOM to encapsulate structure, style, and behavior.
+ * It provides a fallback-friendly interface — the chat structure remains readable even if JavaScript fails.
+ * The component dynamically handles user input, displays messages, and generates Eliza-style responses.
+ */
 import {getBotResponse} from "./eliza.js";
 
+
+/**
+ * Represents the main chat interface as a Web Component.
+ * Uses Shadow DOM for encapsulation and isolation of styles.
+ * @extends HTMLElement
+ */
 class ChatInterface extends HTMLElement {
+    /**
+     * Creates a new ChatInterface instance and attaches an open Shadow DOM.
+     */
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
     }
 
+    /**
+     * Lifecycle method that runs when the element is connected to the DOM.
+     * Builds the internal structure, applies styles, and attaches event listeners for user interaction.
+     */
     connectedCallback() {
         this.shadowRoot.innerHTML = `
         <style>
@@ -66,6 +86,7 @@ simple-chat {
     background: lightgray;
     border-radius: var(--radius) var(--radius) var(--radius) 0.2rem;
     max-width: 40ch;
+    overflow-wrap:anywhere;
     padding: .5rem 1rem;
     font-size: clamp(.5rem, 2vw, 1rem);
     color:black;
@@ -76,6 +97,7 @@ simple-chat {
     align-self: flex-end;
     border-radius: var(--radius) var(--radius) 0.2rem var(--radius) ;
     max-width: 40ch;
+    overflow-wrap:anywhere;
     padding: .5rem 1rem;
     font-size: clamp(.5rem, 2vw, 1rem);
 }
@@ -149,12 +171,14 @@ simple-chat {
 
 
 `;
+        // Reference internal elements
         this.message= this.shadowRoot.querySelector('.messages');
         this.form = this.shadowRoot.querySelector('form');
         this.input = this.shadowRoot.querySelector('input');
 
         let self= this;
 
+        // Attach event listener for form submission
         this.form.addEventListener('submit', function(e){
             e.preventDefault();
             let text = self.input.value.trim();
@@ -170,6 +194,11 @@ simple-chat {
         });
     }
 
+    /**
+     * Appends a chat bubble message to the interface.
+     * @param {string} text - The message text content.
+     * @param {'user' | 'bot'} role - Who sent the message (affects bubble styling).
+     */
     addMessage(text, role) {
         let msg = document.createElement('p');
         msg.className = role + '-messages';
