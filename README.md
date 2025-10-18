@@ -46,8 +46,6 @@ This project will follow an **iterative, four-phase workflow** with incremental 
 3. **Progressive Enhancement:** Convert markup into a `<simple-chat>` custom element
 4. **Shadow DOM:** Create `<chat-interface>` with encapsulated styles and behavior
 
-Each step will include a short reflection added to this README.
-
 ---
 
 ## Repository Structure (Planned)
@@ -103,14 +101,49 @@ messages in multiple ways. It improves accessibility and creates a smoother, mor
 * By default, pressing Enter in a form triggers a page reload. Using `e.preventDefault()` stops that behavior, 
 preventing the chat from clearing itself after each message. This allows the conversation history to stay visible as the chat continues.
 
+### Graceful Degradation 
+#### Moved prototype HTML and CSS into JS
+- Reused the same structure from the prototype and applied dynamic message handling.
 
-## Comparing the Approaches (to be filled out)
-Note differences in code organization
-Consider reusability of each approach
-Think about maintenance and debugging
-Reflect on when you'd use each approach
+#### Replaced `innerHTML` with DOM methods
+- Used `createElement()` and `appendChild()` instead of `innerHTML` to safely generate messages without rewriting the DOM.
+
+#### Added speaker differentiation
+- Introduced conditional logic to assign `user` or `bot` message classes, ensuring correct CSS bubble alignment.
+
+#### Used semantic HTML for messages
+- Each message used `<article>` and `<p>` to maintain structure and accessibility.
+
+#### Added event listeners for both Enter and Send
+- Enhanced usability by supporting multiple ways to send messages.
+
+#### Used `e.preventDefault()` to stop reload
+- Prevented the form from clearing the conversation upon submission.
+
+**Lesson Learned:**  
+DOM manipulation gives full control but can get messy quickly as complexity grows. It’s powerful but not very modular.
+
+---
+
+### Progressive Enhancement
+#### Started with working HTML first
+- The base `<simple-chat>` element contained fully functional HTML (so it still displayed if JS failed).
+
+#### Enhanced behavior with JavaScript
+- Added message logic and Eliza responses dynamically through the custom element class.
+- JS only enhanced the existing markup — it didn’t depend on it.
+
+#### No Shadow DOM
+- Styles were global, allowing easy debugging and shared visual consistency with other pages.
 
 
+## Comparing the Approaches 
+Each version of the chat built on the one before it. The prototype was just HTML and CSS which is simple and good for design, 
+but not interactive. The DOM Manipulation version added JavaScript to make the chat work, but it wasn’t very organized 
+and could get messy with more features. The Progressive Enhancement version started with working HTML and added extra 
+features with JavaScript, so it still looked fine even if scripts didn’t load. The final Shadow DOM version kept everything 
+together inside one reusable component, making it cleaner and more professional. Overall, each step showed how adding 
+structure and interactivity changes how easy a project is to build, use, and maintain.
 
 ## License
 This project is licensed under the MIT License 
